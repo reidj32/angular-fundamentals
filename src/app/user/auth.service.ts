@@ -13,8 +13,9 @@ export class AuthService {
       id: 1,
       userName: userName,
       firstName: 'Jim',
-      lastName: 'Reid',
+      lastName: 'Reid'
     };
+    console.log(`username: ${userName} | password: ${password}`);
   }
 
   isAuthenticated(): boolean {

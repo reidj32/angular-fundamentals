@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +20,7 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, UserModule, AppRoutingModule],
+  imports: [CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, UserModule, AppRoutingModule],
   declarations: [
     AppComponent,
     Error404Component,

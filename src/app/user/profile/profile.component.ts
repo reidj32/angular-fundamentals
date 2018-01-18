@@ -6,20 +6,25 @@ import { AuthService } from '../auth.service';
 
 @Component({
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
+  firstName: FormControl;
+  lastName: FormControl;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    const firstName = new FormControl(this.authService.currentUser.firstName, Validators.required);
-    const lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [
+      Validators.required,
+      Validators.pattern('[a-zA-Z].*')
+    ]);
+    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
 
     this.profileForm = new FormGroup({
-      firstName: firstName,
-      lastName: lastName,
+      firstName: this.firstName,
+      lastName: this.lastName
     });
   }
 
@@ -30,7 +35,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  cancel(): void {
+  validateFirstName() {
+    return this.firstName.valid || this.firstName.untouched;
+  }
+
+  validateLastName() {
+    return this.lastName.valid || this.lastName.untouched;
+  }
+
+  cancel() {
     this.router.navigate(['events']);
   }
 }
