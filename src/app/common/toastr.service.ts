@@ -4,7 +4,6 @@ declare let toastr: any;
 
 @Injectable()
 export class ToastrService {
-
   success(message: string, title?: string) {
     toastr.success(message, title);
   }
@@ -17,5 +16,4 @@ export class ToastrService {
   error(message: string, title?: string) {
     toastr.error(message, title);
   }
-
 }

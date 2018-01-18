@@ -5,10 +5,8 @@ import { AuthService } from '../../user/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-
-  constructor(public authService: AuthService) {  }
-
+  constructor(public authService: AuthService) {}
 }

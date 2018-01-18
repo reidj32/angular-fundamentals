@@ -5,11 +5,14 @@ import { EventService } from './event.service';
 describe('EventService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EventService]
+      providers: [EventService],
     });
   });
 
-  it('should be created', inject([EventService], (service: EventService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([EventService], (service: EventService) => {
+      expect(service).toBeTruthy();
+    }),
+  );
 });

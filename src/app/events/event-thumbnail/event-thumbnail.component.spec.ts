@@ -6,12 +6,13 @@ describe('EventThumbnailComponent', () => {
   let component: EventThumbnailComponent;
   let fixture: ComponentFixture<EventThumbnailComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ EventThumbnailComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [EventThumbnailComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EventThumbnailComponent);

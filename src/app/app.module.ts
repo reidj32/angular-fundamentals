@@ -37,9 +37,9 @@ import { UserModule } from './user/user.module';
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 

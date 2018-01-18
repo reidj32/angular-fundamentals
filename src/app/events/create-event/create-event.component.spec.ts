@@ -6,12 +6,13 @@ describe('CreateEventComponent', () => {
   let component: CreateEventComponent;
   let fixture: ComponentFixture<CreateEventComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CreateEventComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [CreateEventComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CreateEventComponent);

@@ -5,11 +5,14 @@ import { EventRouteActivatorService } from './event-route-activator.service';
 describe('EventRouteActivatorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EventRouteActivatorService]
+      providers: [EventRouteActivatorService],
     });
   });
 
-  it('should be created', inject([EventRouteActivatorService], (service: EventRouteActivatorService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([EventRouteActivatorService], (service: EventRouteActivatorService) => {
+      expect(service).toBeTruthy();
+    }),
+  );
 });

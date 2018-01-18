@@ -6,12 +6,13 @@ describe('Error404Component', () => {
   let component: Error404Component;
   let fixture: ComponentFixture<Error404Component>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ Error404Component ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [Error404Component],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(Error404Component);

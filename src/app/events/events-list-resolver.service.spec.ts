@@ -5,11 +5,14 @@ import { EventsListResolverService } from './events-list-resolver.service';
 describe('EventsListResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EventsListResolverService]
+      providers: [EventsListResolverService],
     });
   });
 
-  it('should be created', inject([EventsListResolverService], (service: EventsListResolverService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([EventsListResolverService], (service: EventsListResolverService) => {
+      expect(service).toBeTruthy();
+    }),
+  );
 });

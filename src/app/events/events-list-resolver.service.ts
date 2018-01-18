@@ -8,11 +8,9 @@ import { Event } from './event';
 
 @Injectable()
 export class EventsListResolverService implements Resolve<Event[]> {
-
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.eventService.getEvents().map(events => events);
   }
-
 }

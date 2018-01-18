@@ -5,8 +5,7 @@ import { EventService } from './event.service';
 
 @Injectable()
 export class EventRouteActivatorService {
-
-  constructor(private eventService: EventService, private router: Router) { }
+  constructor(private eventService: EventService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot) {
     const eventExists = !!this.eventService.getEvent(+route.params['id']);

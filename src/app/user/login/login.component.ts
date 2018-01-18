@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   username: string;
   password: string;
   mouseoverLogin: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
     this.authService.loginUser(this.username, this.password);
@@ -22,5 +22,4 @@ export class LoginComponent {
   cancel(): void {
     this.router.navigate(['events']);
   }
-
 }

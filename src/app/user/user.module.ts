@@ -8,13 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UserRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, UserRoutingModule],
   declarations: [ProfileComponent, LoginComponent],
-  providers: [AuthService]
+  providers: [AuthService],
 })
-export class UserModule { }
+export class UserModule {}

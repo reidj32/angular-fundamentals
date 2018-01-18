@@ -6,14 +6,14 @@ import { User } from './user';
 export class AuthService {
   currentUser: User;
 
-  constructor() { }
+  constructor() {}
 
   loginUser(userName: string, password: string): void {
     this.currentUser = {
       id: 1,
       userName: userName,
       firstName: 'Jim',
-      lastName: 'Reid'
+      lastName: 'Reid',
     };
   }
 
@@ -25,5 +25,4 @@ export class AuthService {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
   }
-
 }
