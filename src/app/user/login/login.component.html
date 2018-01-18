@@ -1,0 +1,22 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" autocomplete="off" (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <em *ngIf="(username.invalid && username.touched) || mouseoverLogin">Required</em>
+      <input #username="ngModel" required ngModel name="username" id="username" type="text" class="form-control" placeholder="User Name..."
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <em *ngIf="(password.invalid && password.touched) || mouseoverLogin">Required</em>
+      <input #password="ngModel" required ngModel name="password" id="password" type="password" class="form-control" placeholder="Password..."
+      />
+    </div>
+    <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    </span>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+  </form>
+</div>

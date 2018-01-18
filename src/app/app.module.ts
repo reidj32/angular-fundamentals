@@ -16,9 +16,10 @@ import {
   EventThumbnailComponent,
 } from './events/index';
 import { NavbarComponent } from './nav/navbar/navbar.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, AppRoutingModule],
+  imports: [CommonModule, BrowserModule, UserModule, AppRoutingModule],
   declarations: [
     AppComponent,
     Error404Component,
@@ -36,7 +37,7 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
