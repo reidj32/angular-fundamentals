@@ -9,13 +9,14 @@ import { ToastrService } from './common/toastr.service';
 import { Error404Component } from './errors/404/404.component';
 import {
   CreateEventComponent,
+  CreateSessionComponent,
   EventDetailsComponent,
   EventRouteActivatorService,
   EventService,
   EventsListComponent,
   EventsListResolverService,
   EventThumbnailComponent,
-  CreateSessionComponent
+  SessionListComponent
 } from './events';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
@@ -30,7 +31,8 @@ import { UserModule } from './user/user.module';
     EventThumbnailComponent,
     CreateEventComponent,
     EventDetailsComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   providers: [
     EventService,

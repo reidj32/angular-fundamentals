@@ -6,3 +6,4 @@ export * from './event-route-activator.service';
 export * from './event.service';
 export * from './events-list-resolver.service';
 export * from './event-details/create-session/create-session.component';
+export * from './event-details/session-list/session-list.component';

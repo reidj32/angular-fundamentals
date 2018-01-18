@@ -20,9 +20,14 @@ export class EventService {
     return EVENTS.find(event => event.id === id);
   }
 
-  saveEvent(event) {
+  saveEvent(event: Event) {
     event.id = 999;
-    event.session = [];
+    event.sessions = [];
     EVENTS.push(event);
+  }
+
+  updateEvent(event: Event) {
+    const index = EVENTS.findIndex(x => x.id === event.id);
+    EVENTS[index] = event;
   }
 }
