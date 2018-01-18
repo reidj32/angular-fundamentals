@@ -13,8 +13,8 @@ import {
   EventService,
   EventsListComponent,
   EventsListResolverService,
-  EventThumbnailComponent,
-} from './events/index';
+  EventThumbnailComponent
+} from './events';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
@@ -27,7 +27,7 @@ import { UserModule } from './user/user.module';
     EventsListComponent,
     EventThumbnailComponent,
     CreateEventComponent,
-    EventDetailsComponent,
+    EventDetailsComponent
   ],
   providers: [
     EventService,
@@ -36,10 +36,10 @@ import { UserModule } from './user/user.module';
     EventsListResolverService,
     {
       provide: 'canDeactivateCreateEvent',
-      useValue: checkDirtyState,
-    },
+      useValue: checkDirtyState
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 
