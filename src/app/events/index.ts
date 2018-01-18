@@ -5,3 +5,4 @@ export * from './events-list/events-list.component';
 export * from './event-route-activator.service';
 export * from './event.service';
 export * from './events-list-resolver.service';
+export * from './event-details/create-session/create-session.component';

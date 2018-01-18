@@ -14,7 +14,8 @@ import {
   EventService,
   EventsListComponent,
   EventsListResolverService,
-  EventThumbnailComponent
+  EventThumbnailComponent,
+  CreateSessionComponent
 } from './events';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
@@ -28,7 +29,8 @@ import { UserModule } from './user/user.module';
     EventsListComponent,
     EventThumbnailComponent,
     CreateEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    CreateSessionComponent
   ],
   providers: [
     EventService,
