@@ -5,8 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
-import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
+import {
+  CollapsibleWellComponent,
+  JQUERY_TOKEN,
+  Toastr,
+  TOASTR_TOKEN
+} from './common';
 import { Error404Component } from './errors/404/404.component';
 import {
   checkDirtyState,
@@ -25,6 +29,7 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
 declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
   imports: [
@@ -59,6 +64,10 @@ declare let toastr: Toastr;
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+      provide: JQUERY_TOKEN,
+      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]

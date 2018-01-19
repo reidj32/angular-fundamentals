@@ -1,9 +1,13 @@
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { Event } from './event';
 import { EVENTS } from './events';
+import { Session } from './session';
 
 @Injectable()
 export class EventService {
@@ -29,5 +33,23 @@ export class EventService {
   updateEvent(event: Event) {
     const index = EVENTS.findIndex(x => x.id === event.id);
     EVENTS[index] = event;
+  }
+
+  searchSessions(searchTerm: string): Observable<Session[]> {
+    const term = searchTerm.toLocaleLowerCase();
+    let results: Session[] = [];
+
+    EVENTS.forEach(event => {
+      let matchingSessions = event.sessions.filter(sessions => {
+        return sessions.name.toLocaleLowerCase().indexOf(term) > -1;
+      });
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = event.id;
+        return session;
+      });
+      results = results.concat(matchingSessions);
+    });
+
+    return Observable.of(results).delay(1000);
   }
 }
