@@ -19,11 +19,19 @@ import {
   EventThumbnailComponent,
   SessionListComponent
 } from './events';
+import { DurationPipe } from './events/duration.pipe';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, UserModule, AppRoutingModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UserModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     Error404Component,
@@ -34,7 +42,8 @@ import { UserModule } from './user/user.module';
     EventDetailsComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [
     EventService,
@@ -52,7 +61,9 @@ export class AppModule {}
 
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
-    return window.confirm('You have not saved this event, do you really want to cancel?');
+    return window.confirm(
+      'You have not saved this event, do you really want to cancel?'
+    );
   }
   return true;
 }
