@@ -6,9 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
-import { ToastrService } from './common/toastr.service';
+import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
 import { Error404Component } from './errors/404/404.component';
 import {
+  checkDirtyState,
   CreateEventComponent,
   CreateSessionComponent,
   EventDetailsComponent,
@@ -22,6 +23,8 @@ import {
 import { DurationPipe } from './events/duration.pipe';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
+
+declare let toastr: Toastr;
 
 @NgModule({
   imports: [
@@ -47,23 +50,17 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     EventService,
-    ToastrService,
     EventRouteActivatorService,
     EventsListResolverService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    },
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
     }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-
-export function checkDirtyState(component: CreateEventComponent) {
-  if (component.isDirty) {
-    return window.confirm(
-      'You have not saved this event, do you really want to cancel?'
-    );
-  }
-  return true;
-}
