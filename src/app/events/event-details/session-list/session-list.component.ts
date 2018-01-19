@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 import { Session } from '../../session';
 
@@ -7,10 +7,28 @@ import { Session } from '../../session';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css']
 })
-export class SessionListComponent implements OnInit {
+export class SessionListComponent implements OnInit, OnChanges {
   @Input() sessions: Session[];
+  @Input() filterBy: string;
+  visibleSessions: Session[] = [];
 
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnChanges(): void {
+    if (this.sessions) {
+      this.filterSessions(this.filterBy);
+    }
+  }
+
+  filterSessions(filter: string) {
+    if (filter === 'all') {
+      this.visibleSessions = this.sessions.slice(0);
+    } else {
+      this.visibleSessions = this.sessions.filter(s => {
+        return s.level.toLocaleLowerCase() === filter;
+      });
+    }
+  }
 }

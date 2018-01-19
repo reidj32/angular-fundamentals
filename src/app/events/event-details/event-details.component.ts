@@ -13,8 +13,12 @@ import { Session } from '../session';
 export class EventDetailsComponent implements OnInit {
   event: Event;
   addMode = false;
+  filterBy = 'all';
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {}
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
