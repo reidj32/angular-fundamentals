@@ -43,13 +43,13 @@ export class EventService {
       let matchingSessions = event.sessions.filter(sessions => {
         return sessions.name.toLocaleLowerCase().indexOf(term) > -1;
       });
-      matchingSessions = matchingSessions.map((session: any) => {
+      matchingSessions = matchingSessions.map((session: Session) => {
         session.eventId = event.id;
         return session;
       });
       results = results.concat(matchingSessions);
     });
 
-    return Observable.of(results).delay(1000);
+    return Observable.of(results).delay(100);
   }
 }

@@ -13,15 +13,11 @@ export class NavbarComponent {
   searchTerm: string;
   foundSessions: Session[];
 
-  constructor(
-    public authService: AuthService,
-    private eventService: EventService
-  ) {}
+  constructor(public authService: AuthService, private eventService: EventService) {}
 
   searchSessions(searchTerm) {
     this.eventService.searchSessions(searchTerm).subscribe(sessions => {
       this.foundSessions = sessions;
-      console.log(this.foundSessions);
     });
   }
 }

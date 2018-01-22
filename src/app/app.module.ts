@@ -5,7 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CollapsibleWellComponent, JQueryService, ToastrService } from './common';
+import { CollapsibleWellComponent, JQueryService, SimpleModalComponent, ToastrService } from './common';
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { Error404Component } from './errors/404/404.component';
 import {
   checkDirtyState,
@@ -36,7 +37,9 @@ import { UserModule } from './user/user.module';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [
     EventService,
