@@ -5,12 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {
-  CollapsibleWellComponent,
-  JQUERY_TOKEN,
-  Toastr,
-  TOASTR_TOKEN
-} from './common';
+import { CollapsibleWellComponent, JQueryService, ToastrService } from './common';
 import { Error404Component } from './errors/404/404.component';
 import {
   checkDirtyState,
@@ -28,18 +23,8 @@ import { DurationPipe } from './events/duration.pipe';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
-declare let toastr: Toastr;
-declare let jQuery: Object;
-
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UserModule,
-    AppRoutingModule
-  ],
+  imports: [CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, UserModule, AppRoutingModule],
   declarations: [
     AppComponent,
     Error404Component,
@@ -57,17 +42,11 @@ declare let jQuery: Object;
     EventService,
     EventRouteActivatorService,
     EventsListResolverService,
+    ToastrService,
+    JQueryService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
-    },
-    {
-      provide: TOASTR_TOKEN,
-      useValue: toastr
-    },
-    {
-      provide: JQUERY_TOKEN,
-      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, ValueProvider } from '@angular/core';
 
 export interface Toastr {
   success(msg: string, title?: string): void;
@@ -7,4 +7,8 @@ export interface Toastr {
   error(msg: string, title?: string): void;
 }
 
-export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
+export let ToastrToken = new InjectionToken<Toastr>('toastr');
+
+declare let toastr: Toastr;
+
+export const ToastrService = <ValueProvider>{ provide: ToastrToken, useValue: toastr };

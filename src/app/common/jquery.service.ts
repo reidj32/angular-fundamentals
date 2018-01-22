@@ -1,3 +1,7 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, ValueProvider } from '@angular/core';
 
-export let JQUERY_TOKEN = new InjectionToken('jQuery');
+export let JQueryToken = new InjectionToken('jQuery');
+
+declare let jQuery: Object;
+
+export const JQueryService = <ValueProvider>{ provide: JQueryToken, useValue: jQuery };
