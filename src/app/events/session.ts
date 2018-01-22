@@ -6,5 +6,5 @@ export interface Session {
   level: string;
   abstract: string;
   voters: string[];
-  eventId: number;
+  eventId?: number;
 }
