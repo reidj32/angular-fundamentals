@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
+import { AuthService } from '../../../user/auth.service';
 import { Session } from '../../session';
+import { VoterService } from '../voter.service';
 
 @Component({
   selector: 'app-session-list',
@@ -13,7 +15,7 @@ export class SessionListComponent implements OnInit, OnChanges {
   @Input() sortBy: string;
   visibleSessions: Session[] = [];
 
-  constructor() {}
+  constructor(public authService: AuthService, private voterService: VoterService) {}
 
   ngOnInit() {}
 
@@ -22,6 +24,22 @@ export class SessionListComponent implements OnInit, OnChanges {
       this.filterSessions(this.filterBy);
       this.sortSessions(this.sortBy);
     }
+  }
+
+  toggleVote(session: Session) {
+    if (this.userHasVoted(session)) {
+      this.voterService.deleteVoter(session, this.authService.currentUser.userName);
+    } else {
+      this.voterService.addVoter(session, this.authService.currentUser.userName);
+    }
+
+    if (this.sortBy === 'votes') {
+      this.visibleSessions.sort(sortByVotesDesc);
+    }
+  }
+
+  userHasVoted(session: Session) {
+    return this.voterService.userHasVoted(session, this.authService.currentUser.userName);
   }
 
   private filterSessions(filter: string) {
@@ -35,9 +53,7 @@ export class SessionListComponent implements OnInit, OnChanges {
   }
 
   private sortSessions(sortBy: string) {
-    sortBy === 'name'
-      ? this.visibleSessions.sort(sortByNameAsc)
-      : this.visibleSessions.sort(sortByVotesDesc);
+    sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);
   }
 }
 

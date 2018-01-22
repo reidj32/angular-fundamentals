@@ -18,9 +18,11 @@ import {
   EventsListComponent,
   EventsListResolverService,
   EventThumbnailComponent,
-  SessionListComponent
+  SessionListComponent,
+  UpvoteComponent
 } from './events';
 import { DurationPipe } from './events/duration.pipe';
+import { VoterService } from './events/event-details/voter.service';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
@@ -39,7 +41,8 @@ import { UserModule } from './user/user.module';
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   providers: [
     EventService,
@@ -47,6 +50,7 @@ import { UserModule } from './user/user.module';
     EventsListResolverService,
     ToastrService,
     JQueryService,
+    VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
