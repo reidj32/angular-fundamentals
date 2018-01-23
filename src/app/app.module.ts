@@ -18,6 +18,7 @@ import {
   EventsListComponent,
   EventsListResolverService,
   EventThumbnailComponent,
+  LocationValidatorDirective,
   SessionListComponent,
   UpvoteComponent
 } from './events';
@@ -42,7 +43,8 @@ import { UserModule } from './user/user.module';
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidatorDirective
   ],
   providers: [
     EventService,

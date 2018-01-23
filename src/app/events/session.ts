@@ -1,4 +1,4 @@
-export interface Session {
+export class Session {
   id: number;
   name: string;
   presenter: string;

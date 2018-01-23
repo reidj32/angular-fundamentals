@@ -1,6 +1,6 @@
 import { Session } from './session';
 
-export interface Event {
+export class Event {
   id: number;
   name: string;
   date: Date;
