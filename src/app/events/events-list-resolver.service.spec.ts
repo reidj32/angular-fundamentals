@@ -1,18 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { EventsListResolverService } from './events-list-resolver.service';
+import { EventsListResolver } from './events-list-resolver.service';
 
-describe('EventsListResolverService', () => {
+describe('EventsListResolver', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [EventsListResolverService],
+      providers: [EventsListResolver]
     });
   });
 
   it(
     'should be created',
-    inject([EventsListResolverService], (service: EventsListResolverService) => {
+    inject([EventsListResolver], (service: EventsListResolver) => {
       expect(service).toBeTruthy();
-    }),
+    })
   );
 });

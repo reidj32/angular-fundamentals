@@ -29,9 +29,10 @@ export class CreateEventComponent implements OnInit {
     if (!this.event.location.address) {
       this.event.location = null;
     }
-    this.eventService.saveEvent(this.event);
-    this.isDirty = false;
-    this.router.navigate(['/events']);
+    this.eventService.saveEvent(this.event).subscribe(() => {
+      this.isDirty = false;
+      this.router.navigate(['/events']);
+    });
   }
 
   cancel() {

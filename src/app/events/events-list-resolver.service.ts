@@ -7,10 +7,10 @@ import { Event } from './event';
 import { EventService } from './event.service';
 
 @Injectable()
-export class EventsListResolverService implements Resolve<Event[]> {
+export class EventsListResolver implements Resolve<Event[]> {
   constructor(private eventService: EventService) {}
 
   resolve() {
-    return this.eventService.getEvents().map(events => events);
+    return this.eventService.getEvents();
   }
 }

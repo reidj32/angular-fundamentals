@@ -26,6 +26,7 @@
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
     "ng2f-bootstrap": "0.0.4",
+    "ng2f-server": "^1.0.0",
     "rxjs": "^5.5.2",
     "toastr": "^2.1.4",
     "web-animations-js": "^2.3.1",

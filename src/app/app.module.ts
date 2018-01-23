@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,10 +14,10 @@ import {
   CreateEventComponent,
   CreateSessionComponent,
   EventDetailsComponent,
-  EventRouteActivatorService,
+  EventResolver,
   EventService,
   EventsListComponent,
-  EventsListResolverService,
+  EventsListResolver,
   EventThumbnailComponent,
   LocationValidatorDirective,
   SessionListComponent,
@@ -28,7 +29,15 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
 import { UserModule } from './user/user.module';
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, UserModule, AppRoutingModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    UserModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     Error404Component,
@@ -48,8 +57,8 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     EventService,
-    EventRouteActivatorService,
-    EventsListResolverService,
+    EventsListResolver,
+    EventResolver,
     ToastrService,
     JQueryService,
     VoterService,
