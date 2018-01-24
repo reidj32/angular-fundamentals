@@ -10,6 +10,6 @@ import { UserRoutingModule } from './user-routing.module';
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, UserRoutingModule],
   declarations: [ProfileComponent, LoginComponent],
-  providers: [AuthService],
+  providers: [AuthService]
 })
 export class UserModule {}

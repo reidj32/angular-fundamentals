@@ -14,14 +14,16 @@ export class ProfileComponent implements OnInit {
   firstName: FormControl;
   lastName: FormControl;
 
-  constructor(private authService: AuthService, private router: Router, @Inject(ToastrToken) private toastr: Toastr) {}
+  constructor(private authService: AuthService, private router: Router, @Inject(ToastrToken) private toastr: Toastr) {
+    let firstName = '';
+    let lastName = '';
+    if (this.authService.currentUser) {
+      firstName = this.authService.currentUser.firstName;
+      lastName = this.authService.currentUser.lastName;
+    }
 
-  ngOnInit() {
-    this.firstName = new FormControl(this.authService.currentUser.firstName, [
-      Validators.required,
-      Validators.pattern('[a-zA-Z].*')
-    ]);
-    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
+    this.firstName = new FormControl(firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    this.lastName = new FormControl(lastName, Validators.required);
 
     this.profileForm = new FormGroup({
       firstName: this.firstName,
@@ -29,18 +31,33 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  ngOnInit() {}
+
   saveProfile(formValues) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-      this.toastr.success('Profile Saved!');
+      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName).subscribe(() => {
+        this.toastr.success('Profile Saved!');
+      });
     }
   }
 
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['user/login']);
+    });
+  }
+
   validateFirstName() {
+    if (!this.firstName) {
+      return false;
+    }
     return this.firstName.valid || this.firstName.untouched;
   }
 
   validateLastName() {
+    if (!this.lastName) {
+      return false;
+    }
     return this.lastName.valid || this.lastName.untouched;
   }
 

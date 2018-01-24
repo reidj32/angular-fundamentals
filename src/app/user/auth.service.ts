@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -25,10 +25,21 @@ export class AuthService {
           this.currentUser = <User>res.user;
         }
       })
-      .catch((err: HttpErrorResponse) => {
-        console.error('Error logging in: ', err.statusText);
+      .catch(() => {
         return Observable.of(false);
       });
+  }
+
+  logout() {
+    this.currentUser = undefined;
+
+    return this.http.post(
+      'http://localhost:8808/api/logout',
+      {},
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json')
+      }
+    );
   }
 
   isAuthenticated(): boolean {
@@ -46,5 +57,9 @@ export class AuthService {
   updateCurrentUser(firstName: string, lastName: string) {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
+
+    return this.http.put(`http://localhost:8808/api/users/${this.currentUser.id}`, this.currentUser, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
   }
 }
