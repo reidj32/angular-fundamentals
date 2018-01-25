@@ -1,7 +1,7 @@
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/map';
 
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
