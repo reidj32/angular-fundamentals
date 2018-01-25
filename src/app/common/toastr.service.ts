@@ -9,6 +9,6 @@ export interface Toastr {
 
 export let ToastrToken = new InjectionToken<Toastr>('toastr');
 
-declare let toastr: Toastr;
+export declare let toastr: Toastr;
 
 export const ToastrService = <ValueProvider>{ provide: ToastrToken, useValue: toastr };
