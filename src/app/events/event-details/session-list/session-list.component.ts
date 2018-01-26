@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { AuthService } from '../../../user/auth.service';
 import { Session } from '../../session';
@@ -9,7 +9,7 @@ import { VoterService } from '../voter.service';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css']
 })
-export class SessionListComponent implements OnInit, OnChanges {
+export class SessionListComponent implements OnChanges {
   @Input() sessions: Session[];
   @Input() filterBy: string;
   @Input() sortBy: string;
@@ -18,9 +18,7 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   constructor(public authService: AuthService, private voterService: VoterService) {}
 
-  ngOnInit() {}
-
-  ngOnChanges(): void {
+  ngOnChanges(_changes: SimpleChanges): void {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
       this.sortSessions(this.sortBy);
